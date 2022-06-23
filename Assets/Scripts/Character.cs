@@ -7,23 +7,18 @@ public class Character : MonoBehaviour
 {
     // Start is called before the first frame update
     public Vector2Int pos;
-    public GameObject lane;
-    
-    private Lane laneController;
-    private bool canControl;
+
+    private GameController _gameController;
+    private MapController _mapController;
+    private bool _canControl;
     void Start()
     {
+        _gameController = GameObject.Find("GameController").GetComponent<GameController>();
+        _mapController = _gameController.GetMapController();
         var position = transform.position;
         pos.x = (int) Math.Round(position.x);
         pos.y = (int) Math.Round(position.z);
-        laneController = lane.GetComponent<Lane>();
-        canControl = false;
-        GetComponent<Rigidbody>().isKinematic = false;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        print("fsjeofjoejfoiejfie");
+        _canControl = false;
     }
 
     // Update is called once per frame
@@ -54,14 +49,14 @@ public class Character : MonoBehaviour
 
     private void MoveTo(Vector2Int pos)
     {
-        if (!laneController.isOnLane(pos))
+        if (!_mapController.isOnLane(pos))
         {
             print("cant move");
             return;
         }
         this.pos = pos;
-        transform.position = new Vector3(pos.x, transform.position.y, pos.y);
-        if (laneController.isTarget(this.pos))
+        this.transform.position = new Vector3(pos.x, transform.position.y, pos.y);
+        if (_mapController.IsTarget(this.pos))
         {
             print("win");
         }

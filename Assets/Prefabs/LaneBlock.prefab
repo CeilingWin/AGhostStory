@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2589480152492842413}
   - component: {fileID: 2589480152492842414}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: LaneBlock
   m_TagString: LaneCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

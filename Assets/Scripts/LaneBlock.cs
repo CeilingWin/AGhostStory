@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class LaneCube : MonoBehaviour
+public class LaneBlock : MonoBehaviour
 {
     // Start is called before the first frame update
     [FormerlySerializedAs("coordinate")] public Vector2Int pos;
